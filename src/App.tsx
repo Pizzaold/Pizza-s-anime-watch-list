@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+
+function MyButton({ title, onClick }: { title: string, onClick: () => void }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <button onClick={onClick}>{title}</button>
+  );
+}
+
+function App() {
+  const [a, setA] = useState(0);
+
+  const handleButtonClick = () => {
+    setA(a + 1);
+  };
+
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton title="I'm a button" onClick={handleButtonClick}/>
+      <p>{a}</p>
     </div>
   );
 }
